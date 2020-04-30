@@ -1,0 +1,13 @@
+server:
+  port: 6001     # eureka  服务注册中心
+spring:
+  application:
+    name: bishe-registry
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:6001/eureka
+    register-with-eureka: false
+  server:
+    enable-self-preservation: false      #关闭自我保护模式
+    eviction-interval-timer-in-ms: 10000          #定期清除无效连接

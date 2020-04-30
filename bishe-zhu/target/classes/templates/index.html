@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>后台登录-X-admin2.0</title>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />-->
+    <link rel="stylesheet" th:href="@{/static/css/font.css}">
+	<link rel="stylesheet" th:href="@{/static/css/xadmin.css}">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script th:src="@{/static/lib/layui/layui.js}" charset="utf-8"></script>
+    <script type="text/javascript" th:src="@{/static/js/xadmin.js}"></script>
+</head>
+<body class="login-bg">
+    
+    <div class="login layui-anim layui-anim-up">
+        <div class="message">信院管理登录</div>
+        <span></span>
+        <a href="javascript:;" style="color:rgb(24 159 146)">密码登录</a>&emsp;&emsp; <a th:href="@{/phonelogin}" style="color:blueviolet">手机验证码登录</a>
+        <form method="post" class="layui-form" action="/login" >
+            <input name="username" placeholder="用户名" onblur="verif(this.value)"  type="text" lay-verify="required" class="layui-input" >
+            <div name="tishi"></div>
+            <hr class="hr15">
+            <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
+            <hr class="hr15">
+            <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
+            <hr class="hr20" >
+        </form>
+    </div>
+
+    <script>
+        var username=document.getElementsByName("username")[0];
+        var password=document.getElementsByName("password")[0];
+        var tishi=document.getElementsByName("tishi");
+        function check() {
+            if (username.value.length<6){
+                tishi.innerHTML="输入的账号不符合规范".fontcolor("red")
+            }
+            if (password.value.length<6||password.value.length>15){
+                tishi.innerHTML="输入的密码不符合规范".fontcolor("red");
+            }
+        }
+        function verif(t) {
+            $.ajax({
+                url: "http://localhost:8080/aoligei",
+                type: "POST",
+                contentType:"application/json;charset=UTF-8",
+                data: t,
+                dataType: "json",
+                async: false,
+                //  success  成功就获取数据
+                // success: function (data) {
+                //     if (data.username==""){
+                //     alert("没有该账户");
+                //     }else{
+                //     alert(data.password)
+                //     }
+                // },
+                error:function () {
+                    alert("没有该账户");
+                }
+
+            })
+
+        }
+    </script>
+
+    
+    <!-- 底部结束 -->
+</body>
+</html>

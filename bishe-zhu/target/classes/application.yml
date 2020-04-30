@@ -1,0 +1,30 @@
+
+spring:
+  application:
+    name: zhu-service
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql:///xinyuan
+    driver-class-name: com.mysql.jdbc.Driver
+  thymeleaf:
+    cache: false
+  redis:
+    host: 192.168.92.128
+    port: 6379
+  #eureka:
+    #  client:
+      #service-url:
+    #defaultZone: http://localhost:6001/eureka
+    #instance:
+    #lease-expiration-duration-in-seconds: 15
+    #lease-renewal-interval-in-seconds: 5
+
+mybatis:
+  type-aliases-package: com.bishe.item.entity
+yzt:
+  sms:
+    accessKeyId: LTAI4Fh1zn7sFpCumRfp9saz # 你自己的accessKeyId
+    accessKeySecret: z1SDRVT9xNaXemTO3Tvv3jaRlU5MyW # 你自己的AccessKeySecret
+    signName: 来次购 # 签名名称
+    verifyCodeTemplate: SMS_184211268 # 模板名称

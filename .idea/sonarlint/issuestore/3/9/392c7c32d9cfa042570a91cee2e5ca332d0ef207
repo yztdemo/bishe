@@ -1,0 +1,4 @@
+
+dsquid:UselessImportCheck"4Remove this unused import 'com.bishe.entity.Course'.(Í‡â¨ıÿÿÿÿ8„ç‘˜.
+usquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹”Ëıÿÿÿÿ8âÔ„•.
+psquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾Â¾š8éƒƒ¯’.

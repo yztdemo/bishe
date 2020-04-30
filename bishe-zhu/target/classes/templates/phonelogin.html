@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>后台登录-X-admin2.0</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" th:href="@{/static/css/font.css}">
+    <link rel="stylesheet" th:href="@{/static/css/xadmin.css}">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script th:src="@{//staticlib/layui/layui.js}" charset="utf-8"></script>
+    <script type="text/javascript" th:src="@{/static/js/xadmin.js}"></script>
+
+    <style>
+        #phonebutton {
+            width: 30%;
+            height: 30%;
+            line-height: 13px;
+        }
+    </style>
+</head>
+<body class="login-bg">
+
+<div class="login layui-anim layui-anim-up">
+    <div class="message">信院管理登录</div>
+    <span></span>
+    <a href="/" style="color:rgb(24 159 146)">密码登录</a>&emsp;&emsp; <a href="" style="color:blueviolet">手机验证码登录</a>
+    <form method="post" class="layui-form" action="/login1" >
+        <input name="phonenumber" placeholder="手机号码" type="text" lay-verify="required" class="layui-input" >
+        <div name="tishi"></div>
+<!--        这里是 发送输入验证码 发送手机验证码-->
+            <canvas id="canvas" style="margin-top: 10px" width="120px" height="40px"></canvas><br>
+            <input type="text" id="imagecode" style="width: 45%;height: 40px;margin: 0" placeholder="请输入验证码">
+            <input id="phonebutton" type="button" class="button" onclick="phone()" value="发送">
+        <input name="verificationcode" lay-verify="required" placeholder="手机验证码"  type="password" class="layui-input">
+        <input value="登录" style="width:100%;" type="submit"/>
+        <hr class="hr20" >
+    </form>
+</div>
+<script>
+
+    let canvas = document.getElementById('canvas');
+    let context = canvas.getContext('2d');
+    var tishi=document.getElementsByName("tishi")[0];
+    var jimagecode=draw();
+    //绘制图形
+    function draw() {
+        //每次绘画前，清空画板
+        context.clearRect(0, 0, 120, 40);
+        //顶个边框
+        context.strokeRect(0, 0, 120, 40);
+        let str="";
+        //设置随机数选项
+        let aCode = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g'];
+        //画出随机数
+        for (let i = 0; i < 4; i++) {
+            let x = 20 + 20 * i;
+            let y = 20 + 10 * Math.random();
+            let index = Math.floor(Math.random() * aCode.length);
+            var txt = aCode[index];
+            str+=txt
+            context.font = 'bold 20px 微软雅黑';
+            context.fillStyle = getColor();
+            //从此步开始，为字母旋转
+            context.translate(x, y);
+            let deg = Math.random() * 70 * Math.PI / 180;
+            context.rotate(deg);
+            context.fillText(txt, 0, 0);
+            context.rotate(-deg);
+            context.translate(-x, -y);
+        }
+        //设置干扰线 8条
+        for (let i = 0; i < 8; i++) {
+            context.beginPath();
+            context.moveTo(Math.random() * 120, Math.random() * 40);
+            context.lineTo(Math.random() * 120, Math.random() * 40);
+            context.strokeStyle = getColor();
+            context.stroke();
+        }
+        //设置干扰点 20 个
+        for (let i = 0; i < 20; i++) {
+            context.beginPath();
+            let x = Math.random() * 120;
+            let y = Math.random() * 40;
+            context.moveTo(x, y);
+            context.lineTo(x + 1, y + 1);
+            context.strokeStyle = getColor();
+            context.stroke();
+        }
+        return str
+    }
+    //获取随机颜色
+    function getColor() {
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+        return `rgb(${r}, ${g}, ${b})`
+    }
+    //点击刷新
+    canvas.onclick = function flush() {
+        jimagecode=draw();
+
+    };
+
+    function phone() {
+        var imagecode=document.getElementById("imagecode").value;
+        var phonenumber=document.getElementsByName("phonenumber")[0].value;
+
+        if (phonenumber==""){
+            tishi.innerHTML="手机号为空了".fontcolor("red")
+            // alert("请输入手机号码");
+            // window.location.reload()
+        }else if (imagecode==jimagecode){
+            $.ajax({
+                url: "http://localhost:8080/phonelogins",
+                type: "POST",
+                data: phonenumber,
+                dataType: "json",
+                contentType:"application/json;charset=UTF-8",
+                async: false,
+                success: function(data){
+                    if (data==1){
+                    alert("请查看手机短信")
+                    }
+                }
+            })
+        }else{
+            tishi.innerHTML="验证码不正确".fontcolor("red")
+            this.onclick=function () {
+                jimagecode=draw();
+            }
+            // alert("验证码不正确");
+            // window.location.reload()
+
+        }
+    }
+</script>
+</body>
+
+</html>

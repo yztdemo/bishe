@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/font.css">
+    <link rel="stylesheet" href="/static/css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" th:src="@{/static/js/xadmin.js}"></script>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<!--    <script th:src="@{/js/jquery-1.12.4.min.js}"></script>-->
+<!--    <script th:src="@{/js/browser.min.js}"></script>-->
+  </head>
+  
+  <body>
+  <div class="container">
+      <div class="logo"><a href="./main.html">实验室开课系统</a></div>
+      <div class="left_open">
+          <i title="展开左侧栏" class="iconfont">&#xe699;</i>
+      </div>
+      <ul class="layui-nav left fast-add" lay-filter="">
+          <li class="layui-nav-item">
+              <a href="javascript:;">+新增</a>
+              <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                  <dd><a onclick="x_admin_show('资讯','http://www.baidu.com')"><i class="iconfont">&#xe6a2;</i>资讯</a></dd>
+                  <dd><a onclick="x_admin_show('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>图片</a></dd>
+                  <dd><a onclick="x_admin_show('用户','http://www.baidu.com')"><i class="iconfont">&#xe6b8;</i>用户</a></dd>
+              </dl>
+          </li>
+      </ul>
+      <ul class="layui-nav right" lay-filter="">
+          <li class="layui-nav-item">
+              <a href="javascript:;">[[${session.user.username}]]</a>
+              <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                  <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">首页</a></dd>
+                  <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">修改密码</a></dd>
+                  <dd><a href="/">注销</a></dd>
+              </dl>
+          </li>
+          <li class="layui-nav-item to-index"><a href="/">测试</a></li>
+      </ul>
+
+  </div>
+  <!-- 顶部结束 -->
+  <!-- 中部开始 -->
+  <!-- 左侧菜单开始 -->
+  <div th:fragment="left" class="left-nav">
+      <div id="side-nav">
+          <ul id="nav">
+              <li>
+                  <a href="javascript:;">
+                      <i class="iconfont">&#xe6b8;</i>
+                      <cite>课程设置</cite>
+                      <i class="iconfont nav_right">&#xe697;</i>
+                  </a>
+                  <ul class="sub-menu">
+                      <li>
+                          <a th:href="@{/member-list}">
+                              <i class="iconfont">&#xe6a7;</i>
+                              <cite>课表管理</cite>
+                          </a>
+                      </li >
+                      <li>
+                          <a href="/member-password">
+                              <i class="iconfont">&#xe6a7;</i>
+                              <cite>增加课程</cite>
+                          </a>
+                      </li>
+                  </ul>
+              </li>
+              <!--                // th:if="${session.user.role==teacher}" [[${session.user.role}]]   -->
+              <li th:if="${session.user.role== 'teacher'||session.user.role== 'boss'}">
+                  <a href="javascript:;">
+                      <i class="iconfont">&#xe723;</i>
+                      <cite>实验课程设置</cite>
+                      <i class="iconfont nav_right">&#xe697;</i>
+                  </a>
+                  <ul class="sub-menu">
+                      <li>
+                          <a _href="order-list.html">
+                              <i class="iconfont">&#xe6a7;</i>
+                              <cite>订单列表</cite>
+                          </a>
+                      </li >
+                  </ul>
+              </li>
+              <li th:if="${session.user.role== 'student'||session.user.role== 'boss'}">
+                  <a href="javascript:;">
+                      <i class="iconfont">&#xe723;</i>
+                      <cite>学生模块</cite>
+                      <i class="iconfont nav_right">&#xe697;</i>
+                  </a>
+                  <ul class="sub-menu">
+                      <li>
+                          <a _href="cate.html">
+                              <i class="iconfont">&#xe6a7;</i>
+                              <cite>多级分类</cite>
+                          </a>
+                      </li >
+                  </ul>
+              </li>
+              <li>
+                  <a href="javascript:;">
+                      <i class="iconfont">&#xe723;</i>
+                      <cite>未命名</cite>
+                      <i class="iconfont nav_right">&#xe697;</i>
+                  </a>
+                  <ul class="sub-menu">
+                      <li>
+                          <a _href="city.html">
+                              <i class="iconfont">&#xe6a7;</i>
+                              <cite>三级地区联动</cite>
+                          </a>
+                      </li >
+                      <li>
+                          <a href="order-list.html">
+                              <i class="iconfont">&#xe6a7;</i>
+                              <cite>富文本</cite>
+                          </a>
+                      </li >
+                  </ul>
+              </li>
+          </ul>
+      </div>
+  </div>
+  <!--右侧主题部分-->
+  <div class="page-content">
+      <form>
+          <table class="layui-table">
+              <tbody id="table">
+             </tbody>
+          </table>
+      </form>
+  </div>
+
+  <!--  底部开始 -->
+  <div class="footer" style="line-height: 15px">
+      <div class="copyright" style=""><center>YZT实验室开课</center></div>
+  </div>
+
+  <script th:inline="javascript">
+      var subjects=/*[[${subject}]]*/ [];
+      console.log(subjects)
+  </script>
+   <script>
+       var i=1;
+       var j=0;
+        var week = ['', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
+        var subjects=subjects;
+        var list = [
+            [
+                '上午第一节8.00-9.40',
+                '/',
+                '/',
+                '/',
+                '/',
+                '/',
+                '/',
+                '/'
+            ],
+            [
+                 '上午第二节10.00-11.45',
+                '/',
+                 '/',
+                 '/',
+                 '/',
+                 '/',
+                 '/',
+                 '/'
+            ],
+            [
+                '下午第一节14.00-15.40',
+                '/',
+                '/',
+                '/',
+                '/',
+                '/',
+                '/',
+                '/'
+            ],
+            [
+                '下午第二节16.00-17.45',
+                '/',
+                '/',
+                '/',
+                '/',
+                '/',
+                '/',
+                '/'
+            ],
+            [
+                 '晚上第一节19.00-20.45',
+                 '/',
+                 '/',
+                 '/',
+                 '/',
+                 '/',
+                 '/',
+                 '/'
+            ],
+        ];
+       // var i=1;var j=0;
+       function change() {
+           for (const subject of subjects) {
+               console.log(subject);
+              for (let k = 0; k <5 ; k++) {
+
+                for (let l = 1; l <= 7; l++) {
+                     // 星期二上午第二节课
+                   if (subject.c_time==(week[l] + "，" + list[k][0])) {
+                       list[k][l] = subject.c_name;
+                   }
+
+                }
+              }
+           }
+       }
+
+        // 表头
+        function thead () {
+            $('#table').append('<tr>' +
+                '<th>' + week[0] + '</th>' +
+                '<th>' + week[1] + '</th>' +
+                '<th>' + week[2] + '</th>' +
+                '<th>' + week[3] + '</th>' +
+                '<th>' + week[4] + '</th>' +
+                '<th>' + week[5] + '</th>' +
+                '<th>' + week[6] + '</th>' +
+                '<th>' + week[7] + '</th>' +
+                '</tr>')
+        }
+        // 时间节点对应 课程
+        function row () {
+            let lst;
+            for (lst of list){
+                $('#table').append('<tr>' +
+                    '<td>' + lst[0] + '</td>' +
+                    '<td>' + lst[1] + '</td>' +
+                    '<td>' + lst[2] + '</td>' +
+                    '<td>' + lst[3] + '</td>' +
+                    '<td>' + lst[4] + '</td>' +
+                    '<td>' + lst[5] + '</td>' +
+                    '<td>' + lst[6] + '</td>' +
+                    '<td>' + lst[7] + '</td>' +
+                    '</tr>')
+            }
+        }
+        thead ();
+        change();
+        row ();
+    </script>
+  </body>
+
+</html>

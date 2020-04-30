@@ -1,0 +1,5 @@
+
+9squid:S36265"Remove this redundant jump.(ûÁİ…8áîŸéŒ.
+qsquid:S1450"SRemove the "code" field and declare it as a local variable in the relevant methods.(²âèú8§ÆçìŒ.
+Fsquid:S1148<"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8›€¦éŒ.
+[squid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8¿ş¥›Œ.

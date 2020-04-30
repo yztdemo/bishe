@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎来到实验室开课系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/font.css">
+    <link rel="stylesheet" href="/static/css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/js/xadmin.js"></script>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+
+      <style >
+          #li1{
+              font:12px verdana, arial, sans-serif;
+          }
+          #li1 li{
+              list-style:none;
+              padding:0;
+              margin:0;
+              float: left;
+          }
+          #li1 li a{
+              display:block; /* 将链接设为块级元素 */
+              width:150px; /* 设置宽度 */
+              height:30px; /* 设置高度 */
+              line-height:30px; /* 设置行高，将行高和高度设置同一个值，可以让单行文本垂直居中 */
+              text-align:center; /* 居中对齐文字 */
+              padding:20px 80px; /* 设置内边距 */
+              background: whitesmoke; /* 设置背景色 */
+              color: black; /* 设置文字颜色 */
+              text-decoration:none; /* 去掉下划线 */
+              border-right:1px solid #000; /* 在左侧加上分隔线 */
+              font-size: 16px;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="container">
+          <div class="logo"><a href="./main.html">实验室开课系统</a></div>
+          <div class="left_open">
+              <i title="展开左侧栏" class="iconfont">&#xe699;</i>
+          </div>
+          <ul class="layui-nav left fast-add" lay-filter="">
+              <li class="layui-nav-item">
+                  <a href="javascript:;">+新增</a>
+                  <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                      <dd><a onclick="x_admin_show('资讯','http://www.baidu.com')"><i class="iconfont">&#xe6a2;</i>资讯</a></dd>
+                      <dd><a onclick="x_admin_show('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>图片</a></dd>
+                      <dd><a onclick="x_admin_show('用户','http://www.baidu.com')"><i class="iconfont">&#xe6b8;</i>用户</a></dd>
+                  </dl>
+              </li>
+          </ul>
+          <ul class="layui-nav right" lay-filter="">
+              <li class="layui-nav-item">
+                  <a href="javascript:;">[[${session.user.username}]]</a>
+                  <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                      <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">首页</a></dd>
+                      <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">修改密码</a></dd>
+                      <dd><a href="/">注销</a></dd>
+                  </dl>
+              </li>
+              <li class="layui-nav-item to-index"><a href="/">测试</a></li>
+          </ul>
+
+      </div>
+      <!-- 顶部结束 -->
+      <!-- 中部开始 -->
+      <!-- 左侧菜单开始 -->
+      <div th:fragment="left" class="left-nav">
+          <div id="side-nav">
+              <ul id="nav">
+                  <li>
+                      <a href="javascript:;">
+                          <i class="iconfont">&#xe6b8;</i>
+                          <cite>课程设置</cite>
+                          <i class="iconfont nav_right">&#xe697;</i>
+                      </a>
+                      <ul class="sub-menu">
+                          <li>
+                              <a th:href="@{'/member/'+${session.user.id}}">
+                                  <i class="iconfont">&#xe6a7;</i>
+                                  <cite>课表管理</cite>
+
+                              </a>
+                          </li >
+                          <li>
+                              <a href="/member-password">
+                                  <i class="iconfont">&#xe6a7;</i>
+                                  <cite>增加课程</cite>
+                              </a>
+                          </li>
+                      </ul>
+                  </li>
+                  <!--                // th:if="${session.user.role==teacher}" [[${session.user.role}]]   -->
+                  <li th:if="${session.user.role== 'teacher'||session.user.role== 'boss'}">
+                      <a href="javascript:;">
+                          <i class="iconfont">&#xe723;</i>
+                          <cite>实验课程设置</cite>
+                          <i class="iconfont nav_right">&#xe697;</i>
+                      </a>
+                      <ul class="sub-menu">
+                          <li>
+                              <a _href="order-list.html">
+                                  <i class="iconfont">&#xe6a7;</i>
+                                  <cite>订单列表</cite>
+                              </a>
+                          </li >
+                      </ul>
+                  </li>
+                  <li th:if="${session.user.role== 'student'||session.user.role== 'boss'}">
+                      <a href="javascript:;">
+                          <i class="iconfont">&#xe723;</i>
+                          <cite>学生模块</cite>
+                          <i class="iconfont nav_right">&#xe697;</i>
+                      </a>
+                      <ul class="sub-menu">
+                          <li>
+                              <a _href="cate.html">
+                                  <i class="iconfont">&#xe6a7;</i>
+                                  <cite>多级分类</cite>
+                              </a>
+                          </li >
+                      </ul>
+                  </li>
+                  <li>
+                      <a href="javascript:;">
+                          <i class="iconfont">&#xe723;</i>
+                          <cite>未命名</cite>
+                          <i class="iconfont nav_right">&#xe697;</i>
+                      </a>
+                      <ul class="sub-menu">
+                          <li>
+                              <a _href="city.html">
+                                  <i class="iconfont">&#xe6a7;</i>
+                                  <cite>三级地区联动</cite>
+                              </a>
+                          </li >
+                          <li>
+                              <a href="order-list.html">
+                                  <i class="iconfont">&#xe6a7;</i>
+                                  <cite>富文本</cite>
+                              </a>
+                          </li >
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <!--右侧主题部分-->
+      <div class="page-content">
+          <h3>点击班级可以查看该班级的课表</h3>
+          <ul id="li1" th:each="studentcou:${studentcous}">
+              <li><a th:href="@{'/memberadd/'+${studentcou.s_classses}}" th:text="${studentcou.s_classses}"></a></li>
+              <li th:switch="${studentcou.c_time!=null}">
+                  <a th:case="true" th:text="${studentcou.c_time}"></a>
+                  <a th:case="false" > 这门课不是实验课 所以没有安排</a>
+              </li>
+              <li><a id="cname" th:text="${studentcou.c_name}"></a></li>
+              <HR style="border: 1px chartreuse dashed" width="80%" color=#987cb9 SIZE=1>
+          </ul>
+          <h3><label>在下面修改你的课程时间</label></h3>
+          <form>
+              <select id="classes">
+              </select>
+              <select id="select">
+              </select>
+              <select id="select1">
+              </select>
+              <button class="layui-btn" type="button" onclick="updataclass()">修改</button>
+          </form>
+      </div>
+
+      <!--  底部开始 -->
+      <div class="footer">
+          <div class="copyright" style=""><center>YZT实验室开课</center></div>
+      </div>
+      <!--  底部结束-->
+  <script th:inline="javascript">
+      const studentcous=/*[[${studentcous}]]*/ [];
+      console.log(studentcous);
+  </script>
+  <script >
+      var classes=document.getElementById("classes");
+      var selectid=document.getElementById("select");
+      var selectid1=document.getElementById("select1");
+      var coursename=studentcous[0].c_name;
+      var week=["星期一","星期二","星期三","星期四","星期五"]
+      var timeD=[
+          "上午第一节8.00-9.40",
+          "上午第二节10.00-11.45",
+          "下午第一节14.00-15.40",
+          "下午第二节16.00-17.45",
+          "晚上第一节19.00-20.45"];
+      for (const astudentcourse of studentcous){
+          var option=document.createElement("option");
+          option.append(document.createTextNode(astudentcourse.s_classses));
+          option.setAttribute("value",astudentcourse.s_classses);
+          classes.appendChild(option);
+      }
+      for (let i in week) {
+          var option=document.createElement("option");
+          option.append(document.createTextNode(week[i]));
+          option.setAttribute("value",week[i]);
+          selectid.appendChild(option);
+      }
+      for (let i in timeD) {
+          var option=document.createElement("option");
+          option.append(document.createTextNode(timeD[i]));
+          option.setAttribute("value",timeD[i]);
+          selectid1.appendChild(option);
+      }
+
+      function updataclass() {
+          var s1=document.getElementById("classes").value;
+          var s2=document.getElementById("select").value;
+          var s3=document.getElementById("select1").value;
+          console.log(s1);
+          console.log(s2);
+          console.log(s3);
+          $.ajax({
+              url: "http://localhost:8080/updataTC",
+              type: "GET",
+              data: {"banji":s1,"week":s2,"time":s3,"cname":coursename},
+              dataType: "json",
+              contentType:"application/json;charset=UTF-8",
+              async: false,
+              success: function (data) {
+                  alert("这个课程和"+data.c_name+data.c_time+"冲突了")
+              },
+              error:function (data) {
+                  alert("修改成功");
+                  location.reload();
+              }
+          });
+
+
+      }
+  </script>
+  </body>
+
+</html>

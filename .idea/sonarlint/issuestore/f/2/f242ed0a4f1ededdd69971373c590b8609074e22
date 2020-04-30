@@ -1,0 +1,7 @@
+
+psquid:S001179"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Œíï8Òê€¬’.
+osquid:S1192#"LDefine a constant instead of duplicating this literal "error/error" 3 times.(”šÃ¼úÿÿÿÿ8ëùÒ®’.
+¤%squid:RedundantThrowsDeclarationCheck="lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(¥Îøö8¬èŠİ™.
+‚squid:S1488J"_Immediately return this expression instead of assigning it to the temporary variable "integer".(ĞŒÜÎûÿÿÿÿ8¬èŠİ™.
+psquid:S001178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ª©éè8Òê€¬’.
+usquid:S00117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸ÈÊ¨ıÿÿÿÿ8Òê€¬’.
