@@ -1,8 +1,8 @@
 
-Isquid:S1168%"+Return an empty collection instead of null.(¥¹ï8–ùÒ÷Œ.
 …squid:S14885"bImmediately return this expression instead of assigning it to the temporary variable "courseExts".(ï¬¬½úÿÿÿÿ8êœ•™.
-„squid:S1488/"aImmediately return this expression instead of assigning it to the temporary variable "coursescc".(×­­èûÿÿÿÿ8ŸØûî.
-Isquid:S1168-"+Return an empty collection instead of null.(¥¹ï8·¬ •™.
-psquid:S00117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ß¹×Í8Éùî.
-esquid:UselessImportCheck"5Remove this unused import 'com.bishe.entity.Student'.(ÕÈªÂÿÿÿÿÿ8„‡ùî.
 {squid:S1488A"^Immediately return this expression instead of assigning it to the temporary variable "delete".(ÈŞ±l8æøÒ›.
+Isquid:S1168-"+Return an empty collection instead of null.(¥¹ï8·¬ •™.
+„squid:S1488/"aImmediately return this expression instead of assigning it to the temporary variable "coursescc".(×­­èûÿÿÿÿ8ŸØûî.
+Isquid:S1168%"+Return an empty collection instead of null.(¥¹ï8–ùÒ÷Œ.
+esquid:UselessImportCheck"5Remove this unused import 'com.bishe.entity.Student'.(ÕÈªÂÿÿÿÿÿ8„‡ùî.
+psquid:S00117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ß¹×Í8Éùî.

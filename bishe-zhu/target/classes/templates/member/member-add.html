@@ -137,6 +137,7 @@
               <tbody id="table">
              </tbody>
           </table>
+          <button class="layui-btn layui-btn-normal" onclick="printxsl()">打印课表</button>
       </form>
   </div>
 
@@ -147,14 +148,14 @@
 
   <script th:inline="javascript">
       var subjects=/*[[${subject}]]*/ [];
-      console.log(subjects)
   </script>
    <script>
        var i=1;
        var j=0;
-        var week = ['', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
-        var subjects=subjects;
-        var list = [
+       var week = ['', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
+       var subjects=subjects;
+       let classes;
+       var list = [
             [
                 '上午第一节8.00-9.40',
                 '/',
@@ -209,7 +210,7 @@
        // var i=1;var j=0;
        function change() {
            for (const subject of subjects) {
-               console.log(subject);
+               this.classes=subject.s_classses;
               for (let k = 0; k <5 ; k++) {
 
                 for (let l = 1; l <= 7; l++) {
@@ -252,6 +253,20 @@
                     '</tr>')
             }
         }
+        function printxsl(){
+           $.ajax({
+               url: "http://localhost:8080/printxsl",
+               type: "POST",
+               data: this.classes,
+               dataType: "json",
+               contentType:"application/json;charset=UTF-8",
+               async: false,
+               success: function (data) {
+                   alert("打印成功")
+               }
+           })
+        }
+
         thead ();
         change();
         row ();

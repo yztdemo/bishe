@@ -423,7 +423,6 @@ xblock{
     line-height: 35px;
 }
 .page-content .layui-tab-content{
-    position: absolute;
     top: 36px;
     bottom: 0px;
     width: 100%;

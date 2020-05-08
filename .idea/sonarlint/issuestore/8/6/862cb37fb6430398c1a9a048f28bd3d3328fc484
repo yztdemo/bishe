@@ -1,8 +1,8 @@
 
 usquid:S001176"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õÒãŠùÿÿÿÿ8 ‚Ş®’.
-ˆsquid:S14880"eImmediately return this expression instead of assigning it to the temporary variable "studentCourse".(ÕÜğ’ıÿÿÿÿ8ºÒ¯®’.
 usquid:S001176"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õÒãŠùÿÿÿÿ8 ‚Ş®’.
 jsquid:S00112@"FDefine and throw a dedicated exception instead of using a generic one.(ßš—Ñûÿÿÿÿ8ûÀ‘á–.
 usquid:S001176"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õÒãŠùÿÿÿÿ8 ‚Ş®’.
+ˆsquid:S14880"eImmediately return this expression instead of assigning it to the temporary variable "studentCourse".(ÕÜğ’ıÿÿÿÿ8ºÒ¯®’.
 „squid:S2178-"fCorrect this "&" to "&&" and extract the right operand to a variable if it should always be evaluated.(•û‘ò8ûìüğ’.
 }squid:S1488"_Immediately return this expression instead of assigning it to the temporary variable "courses".(Â÷¤²8ç—¶Â.

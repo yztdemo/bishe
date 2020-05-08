@@ -20,6 +20,9 @@ spring:
     #lease-expiration-duration-in-seconds: 15
     #lease-renewal-interval-in-seconds: 5
 
+classes:
+  path: C:/Users/Administrator/Desktop/doc
+
 mybatis:
   type-aliases-package: com.bishe.item.entity
 yzt:

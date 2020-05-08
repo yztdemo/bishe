@@ -7,6 +7,7 @@ import com.bishe.entity.StudentCourse;
 import com.bishe.service.CourseService;
 import com.bishe.service.StudentCourseService;
 import com.bishe.service.TeacherService;
+import com.bishe.service.XSSService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,9 @@ public class TeacherController {
     @Autowired
     private StudentCourseService studentCourseService;
 
+    @Autowired
+    private XSSService xssService;
+
     //  查询老师 教的课程所带的班级
     @RequestMapping("/tclasses/{coursename}")
     public String gettclasses(@PathVariable("coursename")String coursename, Model model){
@@ -35,9 +39,6 @@ public class TeacherController {
             return "error/error";
         }
         List<StudentCourse> classes = this.courseService.selectTeacherCC(coursename);
-//        for (StudentCourse aClass : classes) {
-//            System.out.println(aClass);
-//        }
         model.addAttribute("studentcous",classes);
         return "member/member-edit";
     }
@@ -56,6 +57,20 @@ public class TeacherController {
         }else {
           this.studentCourseService.updatateacherclass(banji,str,cname);
           return null;
+        }
+    }
+
+    @RequestMapping("/printxsl")
+    public @ResponseBody void printxxl(@RequestBody String classes){
+        if (classes==null){
+            return;
+        }
+        // 打印课程表
+        Boolean msg=this.xssService.printxl(classes);
+        if (msg){
+            System.out.println("成功");
+        }else {
+            System.out.println("失败");
         }
     }
 }

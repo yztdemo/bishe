@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface StudentCourseMapper extends Mapper<StudentCourse> {
 
-    @Select("SELECT DISTINCT c_time,c_name FROM student_course WHERE c_time IS NOT NULL AND s_classes=#{classes}")
+    @Select("SELECT DISTINCT s_classes, c_time,c_name FROM student_course WHERE c_time IS NOT NULL AND s_classes=#{classes}")
     List<StudentCourse> selectCourseNameLesson(String classes);
 
 

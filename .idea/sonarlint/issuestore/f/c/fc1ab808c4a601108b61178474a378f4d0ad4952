@@ -1,0 +1,12 @@
+
+psquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(òÈ»8È¯Çç.
+ssquid:UselessImportCheck"HRemove this unused import 'java.util.concurrent.atomic.AtomicReference'.(×‡µó8Ù¦ÑŸ.
+msquid:S2095,"JUse try-with-resources or close this "XSSFWorkbook" in a "finally" clause.(˜„°ÿÿÿÿÿ8µ»…Ä.
+Ksquid:S1905-"(Remove this unnecessary cast to "Sheet".(“Ø’ëùÿÿÿÿ8îƒùä.
+d
+squid:S899+"BDo something with the "boolean" value returned by "createNewFile".(Ğ’Íùÿÿÿÿ8™Šæ.
+usquid:S00117/"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›ìë¿øÿÿÿÿ8Ù¦ÑŸ.
+Msquid:S2093&"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8ÿ´Œæ.
+usquid:S00117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êãŞ¬úÿÿÿÿ8õ™ÂŸ.
+Fsquid:S1148S"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8•üŸ.
+Fsquid:S1148["#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8•üŸ.
