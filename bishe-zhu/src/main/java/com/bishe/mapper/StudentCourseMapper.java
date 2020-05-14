@@ -17,7 +17,7 @@ public interface StudentCourseMapper extends Mapper<StudentCourse> {
 
 
     @Update("UPDATE student_course SET c_time=#{str} WHERE s_classes=#{banji} AND c_name=#{cname};")
-    void updateTeacherclass(String banji, String str, String cname);
+    Integer updateTeacherclass(String banji, String str, String cname);
 
 
     @Select("SELECT * FROM student_course WHERE s_classes=#{banji} AND c_time=#{time} GROUP BY(c_name)")

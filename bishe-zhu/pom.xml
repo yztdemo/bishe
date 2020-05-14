@@ -113,7 +113,12 @@
             <artifactId>commons-collections4</artifactId>
             <version>4.1</version>
         </dependency>
-
+        <!-- 钉钉 -->
+        <dependency>
+            <groupId>com.ding</groupId>
+            <artifactId>taobao-sdk-java-auto_1479188381469-20191008</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
 

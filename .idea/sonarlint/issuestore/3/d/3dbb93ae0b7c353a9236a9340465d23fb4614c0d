@@ -1,9 +1,9 @@
 
-[squid:UselessImportCheck"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ÇæÓ”˜.
-bsquid:S25838"DChange this condition so that it does not always evaluate to "false"(ôóì‰8ñÉùã–.
-Xsquid:S2441>":Make "User" serializable or don't store it in the session.(†Ëš8ñÉùã–.
-psquid:S2441S"MMake "List" and its parameters serializable or don't store it in the session.(æŸ­äùÿÿÿÿ8ŒØ¶ã–.
-ksquid:S2441;"MMake "List" and its parameters serializable or don't store it in the session.(´…Œÿ8Úš¸„œ.
-Xsquid:S2441T":Make "User" serializable or don't store it in the session.(†Ëš8ñÉùã–.
 psquid:S2441="MMake "List" and its parameters serializable or don't store it in the session.(æŸ­äùÿÿÿÿ8±™»„œ.
 esquid:UselessImportCheck"5Remove this unused import 'com.bishe.entity.Student'.(ÕÈªÂÿÿÿÿÿ8µàÇâ–.
+Xsquid:S2441T":Make "User" serializable or don't store it in the session.(†Ëš8ñÉùã–.
+[squid:UselessImportCheck"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ÇæÓ”˜.
+ksquid:S2441;"MMake "List" and its parameters serializable or don't store it in the session.(´…Œÿ8Úš¸„œ.
+psquid:S2441S"MMake "List" and its parameters serializable or don't store it in the session.(æŸ­äùÿÿÿÿ8ŒØ¶ã–.
+Xsquid:S2441>":Make "User" serializable or don't store it in the session.(†Ëš8ñÉùã–.
+bsquid:S25838"DChange this condition so that it does not always evaluate to "false"(ôóì‰8ñÉùã–.

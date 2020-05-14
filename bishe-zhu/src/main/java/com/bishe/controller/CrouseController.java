@@ -65,6 +65,10 @@ public class CrouseController {
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
         c_time=c_time.replace(",","，");
+        //增加课程之前 要先判断课程是不是已经有了
+        StudentCourse studentCourse = studentCourseService.selectByBanJiAndTime(s_classes, c_time);
+        if (studentCourse!=null)
+            return "error/error";
         this.studentCourseService.addcourse(user.getId(),c_name,c_time,s_classes,num);
         return "redirect:http://localhost:8080/member/"+user.getId();
     }

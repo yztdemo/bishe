@@ -43,7 +43,7 @@ public class TeacherController {
         return "member/member-edit";
     }
 
-    // 更新 班级的上课时间 通过
+    // 更新 班级的上课时间
     @RequestMapping("/updataTC")
     public @ResponseBody StudentCourse updataTeacherCourse(
             @RequestParam String banji,

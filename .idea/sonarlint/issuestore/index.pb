@@ -83,3 +83,5 @@ t
 Dbishe-zhu/src/main/java/com/bishe/controller/CommentsController.java,a\9\a9872b3e6e1ba420432386780beb710376f7651a
 i
 9bishe-zhu/src/main/java/com/bishe/service/XSSService.java,f\c\fc1ab808c4a601108b61178474a378f4d0ad4952
+m
+=bishe-zhu/src/main/java/com/bishe/untils/DingTalkMessage.java,0\d\0d3ff0936fbdb39dcc4dec3be0c830d49de55af4

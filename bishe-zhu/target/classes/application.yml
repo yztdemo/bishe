@@ -31,3 +31,5 @@ yzt:
     accessKeySecret: z1SDRVT9xNaXemTO3Tvv3jaRlU5MyW # 你自己的AccessKeySecret
     signName: 来次购 # 签名名称
     verifyCodeTemplate: SMS_184211268 # 模板名称
+ding:
+  curl: https://oapi.dingtalk.com/robot/send?access_token=359591df6ac9e3b2a274bb762532b57f754f903c8dc45edb3dc89b629c630254

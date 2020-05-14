@@ -9,6 +9,7 @@ import com.bishe.mapper.CourseMapper;
 import com.bishe.mapper.StudentCourseMapper;
 import com.bishe.mapper.StudentMapper;
 import com.bishe.mapper.TeacherMapper;
+import com.bishe.untils.DingTalkMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -29,6 +30,8 @@ public class CourseService {
     private StudentMapper studentMapper;
     @Autowired
     private StudentCourseMapper studentCourseMapper;
+    @Autowired
+    private DingTalkMessage dingTalkMessage;
 
 
     public List<Course> selectteachertask(Integer id) {
@@ -63,6 +66,7 @@ public class CourseService {
         this.teacherMapper.deleteCourse(value);
         this.studentCourseMapper.deleteCourse(value);
         int delete = this.courseMapper.delete(course);
+        dingTalkMessage.sendChangMsg("老师删除了"+value+" 你们不用上课了");
         return delete;
     }
 }
